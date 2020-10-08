@@ -1,18 +1,12 @@
 ### SNP calling in pool-seq with bcftools
 
-using samtools v1.9, bcftools v1.9
+using samtools v1.9, bcftools v1.9, vcftools v0.1.17
 
 #### Files
 
 ```
 bam=/home/anna/Dropbox/Pool-seq/data/pool1.sorted.markdup.Scaffold1part.bam
 fasta=/home/anna/Dropbox/Pool-seq/data/albgenome_Scaffold1.fa
-```
-
-#### Checking coverage
-
-```
-samtools depth -a -q 10 -Q 20 ${bam} > pool1.depth
 ```
 
 #### SNP calling
