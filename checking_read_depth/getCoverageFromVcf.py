@@ -64,8 +64,10 @@ if __name__ == '__main__':
     # writing output to file
     wh = open(fname.split('.')[0]+'_cov.tab','w')
     header = ['chrom','pos','pos_cum','length','DP4','\t'.join(['pool_'+str(i) for i in range(gts_num)])]
+    positions = list(S.keys())
+    subset = positions[0::1000]
     wh.write('\t'.join(header)+'\n')
-    for ele in S.keys():
+    for ele in subset:
         inds = '\t'.join([str(ind) for ind in S[ele]])
         chrom = ele.split('_')[0]
         pos = ele.split('_')[1]
