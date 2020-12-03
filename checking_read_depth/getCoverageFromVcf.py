@@ -1,7 +1,7 @@
 import gzip
 import numpy as np
 
-fname = "pool1.vcf.gz"
+fname = "test.vcf.gz"
 faifile = "Agla_Btl03082013.genome.fa.fai"
 
 def getTag(string_,tag_):
@@ -63,7 +63,7 @@ if __name__ == '__main__':
 
     # writing output to file
     wh = open(fname.split('.')[0]+'_cov.tab','w')
-    header = ['chrom','pos','pos_cum','length','DP4',''.join(['pool_'+str(i) for i in range(gts_num)])]
+    header = ['chrom','pos','pos_cum','length','DP4','\t'.join(['pool_'+str(i) for i in range(gts_num)])]
     wh.write('\t'.join(header)+'\n')
     for ele in S.keys():
         inds = '\t'.join([str(ind) for ind in S[ele]])
@@ -76,15 +76,15 @@ if __name__ == '__main__':
     wh.close()
 
     # calculating stats
-    dp, dpi = zip(*S.values())
-    print("mean = "+str(np.mean(dp)))
-    print("median = "+str(np.median(dp)))
-    print("min = "+str(min(dp)))
-    print("max = "+str(max(dp)))
-    print("std = "+str(np.std(dp)))
-    print("mean*2 = "+str(np.mean(dp)*2))
-    print("perc99 = "+str(np.percentile(dp,99)))
-    print("mean+4*sqrt(mean) = "+str(np.mean(dp) + 4*np.sqrt(np.mean(dp))))
+    dp = list(zip(*S.values()))
+    print("mean = "+str(np.mean(dp[0])))
+    print("median = "+str(np.median(dp[0])))
+    print("min = "+str(min(dp[0])))
+    print("max = "+str(max(dp[0])))
+    print("std = "+str(np.std(dp[0])))
+    print("mean*2 = "+str(np.mean(dp[0])*2))
+    print("perc99 = "+str(np.percentile(dp[0],99)))
+    print("mean+4*sqrt(mean) = "+str(np.mean(dp[0]) + 4*np.sqrt(np.mean(dp[0]))))
 
 
 
