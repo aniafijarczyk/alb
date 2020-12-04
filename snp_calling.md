@@ -57,10 +57,12 @@ w = SnpGap INT SNP within INT bp around a gap to be filtered [10]
 #### Filtering
 
 ```
-bcftools view -i 'TYPE=="snp" & FORMAT/AD[:1]>=4 & FORMAT/AD[:0]>=4 & FORMAT/DP[:]>=10 & (DP4[0]+DP4[1]+DP4[2]+DP4[3])>=40 & (DP4[0]+DP4[1]+DP4[2]+DP4[3])<=1000 & FILTER=="PASS"' \
+bcftools view -i 'TYPE=="snp" & FORMAT/AD[:1]>=4 & FORMAT/AD[:0]>=4 & FORMAT/DP[:]>=10 & \
+(DP4[0]+DP4[1]+DP4[2]+DP4[3])>=40 & (DP4[0]+DP4[1]+DP4[2]+DP4[3])<=1000 & FILTER=="PASS"' \
 snp_bcftools_annotated.vcf.gz -Oz -o snp_bcftools.f.vcf.gz
 ```
-
+```
 min depth per pool = 10
 max depth across pools = 1000
 min number of reads supporting a variant to call a snp = 4
+```
